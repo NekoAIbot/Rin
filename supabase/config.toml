@@ -1,0 +1,41 @@
+project_id = "mwzogsqkhjhxrdipqxvi"
+
+[functions.chat]
+verify_jwt = false
+
+[functions.emotion-analyze]
+verify_jwt = false
+
+[functions.memory-extract]
+verify_jwt = false
+
+[functions.rin-api]
+verify_jwt = false
+
+[functions.proactive-insights]
+verify_jwt = false
+
+[functions.daily-summary]
+verify_jwt = false
+
+[functions.multimodal]
+verify_jwt = false
+
+[functions.send-report-email]
+verify_jwt = false
+
+[functions.paystack-webhook]
+verify_jwt = false
+
+[functions.transcribe]
+verify_jwt = false
+
+[functions.telegram-webhook]
+verify_jwt = false
+
+[functions.telegram-link]
+verify_jwt = false
+
+[functions.telegram-setup]
+verify_jwt = false
+

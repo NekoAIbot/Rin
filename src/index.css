@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cream on Forest Green — Light surfaces */
+    --background: 40 30% 95%;
+    --foreground: 155 30% 14%;
+
+    --card: 40 35% 97%;
+    --card-foreground: 155 30% 14%;
+
+    --popover: 40 35% 98%;
+    --popover-foreground: 155 30% 14%;
+
+    --primary: 150 38% 24%;
+    --primary-foreground: 40 35% 97%;
+
+    --secondary: 140 20% 88%;
+    --secondary-foreground: 155 30% 16%;
+
+    --muted: 40 22% 90%;
+    --muted-foreground: 150 12% 38%;
+
+    --accent: 40 55% 55%;              /* muted gold */
+    --accent-foreground: 155 40% 12%;
+
+    --destructive: 5 65% 48%;
+    --destructive-foreground: 40 35% 98%;
+
+    --border: 140 14% 82%;
+    --input: 140 14% 84%;
+    --ring: 150 38% 32%;
+
+    --radius: 1.25rem;
+
+    /* Layered surface + accent tokens */
+    --ivory: 40 40% 97%;
+    --sage: 140 22% 68%;
+    --forest: 150 38% 24%;
+    --gold: 40 55% 55%;
+    --charcoal: 155 30% 14%;
+    --surface-raised: 40 38% 98%;
+    --surface-sunken: 40 20% 90%;
+
+    /* Soft, paper-like shadows */
+    --shadow-paper: 0 1px 2px hsl(150 30% 15% / 0.04), 0 2px 8px hsl(150 30% 15% / 0.05);
+    --shadow-lift:  0 8px 30px -12px hsl(150 30% 15% / 0.18);
+    --shadow-glow:  0 10px 40px -20px hsl(var(--primary) / 0.35);
+
+
+    --sidebar-background: 155 35% 14%;
+    --sidebar-foreground: 40 30% 92%;
+    --sidebar-primary: 140 40% 55%;
+    --sidebar-primary-foreground: 155 35% 10%;
+    --sidebar-accent: 155 30% 20%;
+    --sidebar-accent-foreground: 40 30% 92%;
+    --sidebar-border: 155 25% 22%;
+    --sidebar-ring: 140 40% 55%;
+  }
+
+  .dark {
+    /* Warm charcoal on forest — not pure black */
+    --background: 155 22% 9%;
+    --foreground: 40 28% 92%;
+
+    --card: 155 20% 13%;
+    --card-foreground: 40 28% 92%;
+
+    --popover: 155 22% 12%;
+    --popover-foreground: 40 28% 92%;
+
+    --primary: 140 38% 58%;
+    --primary-foreground: 155 35% 10%;
+
+    --secondary: 155 18% 20%;
+    --secondary-foreground: 40 28% 92%;
+
+    --muted: 155 16% 17%;
+    --muted-foreground: 40 14% 72%;
+
+    --accent: 40 50% 62%;
+    --accent-foreground: 155 35% 10%;
+
+    --destructive: 5 60% 48%;
+    --destructive-foreground: 40 28% 92%;
+
+    --border: 155 16% 21%;
+    --input: 155 16% 19%;
+    --ring: 140 38% 58%;
+
+    --ivory: 40 20% 92%;
+    --sage: 140 20% 55%;
+    --forest: 140 38% 58%;
+    --gold: 40 50% 62%;
+    --charcoal: 40 28% 92%;
+    --surface-raised: 155 20% 15%;
+    --surface-sunken: 155 22% 11%;
+
+    --shadow-paper: 0 1px 2px hsl(0 0% 0% / 0.25), 0 2px 8px hsl(0 0% 0% / 0.20);
+    --shadow-lift:  0 8px 30px -12px hsl(0 0% 0% / 0.45);
+    --shadow-glow:  0 10px 40px -20px hsl(var(--primary) / 0.45);
+
+    --sidebar-background: 155 25% 7%;
+    --sidebar-foreground: 40 28% 92%;
+    --sidebar-primary: 140 38% 58%;
+    --sidebar-primary-foreground: 155 35% 10%;
+    --sidebar-accent: 155 20% 14%;
+    --sidebar-accent-foreground: 40 28% 92%;
+    --sidebar-border: 155 18% 16%;
+    --sidebar-ring: 140 38% 58%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+
+  body {
+    background-image:
+      radial-gradient(at 0% 0%, hsl(var(--primary) / 0.08) 0, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(var(--accent) / 0.06) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .safe-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .safe-pt {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .glass-panel {
+    @apply bg-card/70 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+  .aurora-text {
+    background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-paper { box-shadow: var(--shadow-paper); }
+  .shadow-lift  { box-shadow: var(--shadow-lift); }
+  .shadow-glow  { box-shadow: var(--shadow-glow); }
+
+  /* Material: warm paper — tangible, lightly textured, softly lit */
+  .surface-paper {
+    background-color: hsl(var(--surface-raised) / 0.92);
+    background-image:
+      linear-gradient(180deg, hsl(var(--ivory) / 0.6), transparent 55%),
+      radial-gradient(120% 90% at 0% 0%, hsl(var(--accent) / 0.05), transparent 60%);
+    border: 1px solid hsl(var(--border) / 0.55);
+    box-shadow: var(--shadow-paper);
+  }
+
+  /* Material: frosted glass — floats above paper */
+  .surface-glass {
+    background-color: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid hsl(var(--border) / 0.45);
+    box-shadow: var(--shadow-paper);
+  }
+
+  .surface-sunk {
+    background-color: hsl(var(--surface-sunken) / 0.7);
+    box-shadow: inset 0 1px 3px hsl(var(--forest) / 0.08);
+  }
+}
+
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+.animate-breathe { animation: breathe 5s ease-in-out infinite; }
+
+@keyframes shimmer-line {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted-foreground) / 0.5) 0%,
+    hsl(var(--foreground)) 50%,
+    hsl(var(--muted-foreground) / 0.5) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-line 2.2s ease-in-out infinite;
+}
+
+
+/* ── Aurora motion language ─────────────────────────────────── */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-rise-in {
+  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+.animate-orb-breathe { animation: orb-breathe 5.5s ease-in-out infinite; }
+
+@keyframes orb-listen {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50%      { transform: scale(1.09); filter: brightness(1.12); }
+}
+.animate-orb-listen { animation: orb-listen 1.4s ease-in-out infinite; }
+
+@keyframes orb-think {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.03); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.animate-orb-think { animation: orb-think 3.4s linear infinite; }
+
+@keyframes orb-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-orb-orbit { animation: orb-orbit 14s linear infinite; }
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise-in, .animate-orb-breathe, .animate-orb-listen,
+  .animate-orb-think, .animate-orb-orbit, .animate-breathe {
+    animation: none !important;
+  }
+}
